@@ -27,3 +27,10 @@ return이 hello-template이면 viewResolver가 Thymeleaf템플릿 엔진으로 �
 * `ResponsBody`를 사용하면 viewResolver를 사용하지 않는다.
 * HTTP의 BODY에 문자 내용을 직접 반환한다.
 * `@ResponseBody` 를 사용하고, 객체를 반환하면 객체가 JSON으로 변환됨
+
+**정리**
+
+@ResponseBody를 사용하면
+ * HTTP의 BODY에 문자 내용을 직접 반환
+ * HttpMessageConverter가 동작
+ 
