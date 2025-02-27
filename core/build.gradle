@@ -7,6 +7,12 @@ plugins {
 group = 'hello'
 version = '0.0.1-SNAPSHOT'
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	} }
+
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
@@ -18,7 +24,13 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'jakarta.inject:jakarta.inject-api:2.0.1'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
