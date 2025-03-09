@@ -497,3 +497,27 @@ Object handler = getHandler(request)`
 ~~~
 핸들러 매핑 정보인 handlerMappingMap에서 URL에서 매핑된 핸들러 객체를 찾아서 반환
 
+**핸들러를 처리학 수 있는 어뎁터 조회**
+
+~~~java
+`MyHandlerAdapter adapter = getHandlerAdapter(handler)`
+```java
+ for (MyHandlerAdapter adapter : handlerAdapters) {
+     if (adapter.supports(handler)) {
+         return adapter;
+     }
+}
+~~~
+
+adapter.supports(handler)를 통해서 찾는다.
+ControllerV3 인터페이스를 구현했다면, ControllerV3HandlerAdapter 객체가 반환
+
+**어댑터 호출**
+
+`ModelView mv = adapter.handle(request, response, handler);`
+
+맞추어 반환
+
+**정리**
+
+애노테이션으로 확장 가능 + 이 부분이 mvc 핵심 구조를 파악하는데 모두 필요한 부분이다.
