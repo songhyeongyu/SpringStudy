@@ -267,11 +267,22 @@ HttpSession session = request.getSession();
 //세션에 로그인 회원 정보 보관 session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
      return "redirect:/";
  }
+  @PostMapping("/logout")
+ public String logoutV3(HttpServletRequest request) {
+//세션을 삭제한다.
+HttpSession session = request.getSession(false); if (session != null) {
+         session.invalidate();
+     }
+     return "redirect:/";
+ }
+
  ~~~
 
 **세션 생성과 조회**
 세션을 생성하려면 request.getSession(true)를 사용하면 된다.
 
+**세션 제거**
+session.invalidate()` : 세션을 제거한다.
 **create option**
 
 * request.getSession(true)
